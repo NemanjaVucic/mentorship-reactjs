@@ -1,9 +1,7 @@
-const SearchBar = ({
-  filterText,
-  inStockOnly,
-  onFilterTextChange,
-  onInStockOnlyChange,
-}) => {
+import { useContext } from "react";
+import { InStockOnlyContext } from "../FilterableProductTable";
+
+const SearchBar = ({ filterText, onFilterTextChange, onInStockOnlyChange }) => {
   const handleFilterText = (e) => {
     onFilterTextChange(e.target.value);
   };
@@ -11,6 +9,7 @@ const SearchBar = ({
   const handleInStockOnlyChange = (e) => {
     onInStockOnlyChange(e.target.checked);
   };
+  const inStockOnly = useContext(InStockOnlyContext);
 
   return (
     <form>
