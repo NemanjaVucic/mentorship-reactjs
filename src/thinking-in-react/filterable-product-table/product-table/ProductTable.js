@@ -1,5 +1,5 @@
-import ProductCategoryRow from "./productCategoryRow/ProductCategoryRow";
-import ProductRow from "./productRow/ProductRow";
+import ProductCategoryRow from "./product-category-row/ProductCategoryRow";
+import ProductRow from "./product-row/ProductRow";
 
 const ProductTable = ({ products, inStockOnly }) => {
   let lastCategory = null;
