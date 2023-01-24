@@ -13,12 +13,16 @@ const FilterableProductTable = ({ products }) => {
       )
     );
 
+  const handleInStockOnly = (inStockOnly) => {
+    setInStockOnly(inStockOnly);
+  };
+
   return (
     <>
       <SearchBar
         inStockOnly={inStockOnly}
         onFilterTextChange={handleFilterText}
-        onInStockOnlyChange={setInStockOnly}
+        onInStockOnlyChange={handleInStockOnly}
       />
       <ProductTable products={filteredProducts} inStockOnly={inStockOnly} />
     </>
