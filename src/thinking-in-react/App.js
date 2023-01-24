@@ -1,6 +1,6 @@
 import "./App.css";
-import FilterableProductTable from "./filterableProductTable/FilterableProductTable";
 import { PRODUCTS } from "./data/products";
+import FilterableProductTable from "./filterable-product-table/FilterableProductTable";
 
 export default function App() {
   return <FilterableProductTable products={PRODUCTS} />;
