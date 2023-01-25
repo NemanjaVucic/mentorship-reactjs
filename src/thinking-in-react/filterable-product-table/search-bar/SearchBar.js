@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { InStockOnlyContext } from "../FilterableProductTable";
+import { StockContext } from "../context/StockContext";
 
-const SearchBar = ({ filterText, onFilterTextChange, onInStockOnlyChange }) => {
+const SearchBar = ({ filterText, onFilterTextChange }) => {
+  const context = useContext(StockContext);
   const handleFilterText = (e) => {
     onFilterTextChange(e.target.value);
   };
 
   const handleInStockOnlyChange = (e) => {
-    onInStockOnlyChange(e.target.checked);
+    context.setInStockOnly(e.target.checked);
   };
-  const inStockOnly = useContext(InStockOnlyContext);
 
   return (
     <form>
@@ -22,7 +22,7 @@ const SearchBar = ({ filterText, onFilterTextChange, onInStockOnlyChange }) => {
       <label>
         <input
           type="checkbox"
-          checked={inStockOnly}
+          checked={context.inStockOnly}
           onChange={handleInStockOnlyChange}
         />{" "}
         Only show products in stock

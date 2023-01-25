@@ -1,12 +1,10 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
+import StockContextProvider from "./context/StockContext";
 import ProductTable from "./product-table/ProductTable";
 import SearchBar from "./search-bar/SearchBar";
 
-export const InStockOnlyContext = createContext(null);
-
 const FilterableProductTable = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [inStockOnly, setInStockOnly] = useState(false);
 
   const handleFilterText = (filterText) =>
     setFilteredProducts(
@@ -15,18 +13,11 @@ const FilterableProductTable = ({ products }) => {
       )
     );
 
-  const handleInStockOnly = (inStockOnly) => {
-    setInStockOnly(inStockOnly);
-  };
-
   return (
-    <InStockOnlyContext.Provider value={inStockOnly}>
-      <SearchBar
-        onFilterTextChange={handleFilterText}
-        onInStockOnlyChange={handleInStockOnly}
-      />
+    <StockContextProvider>
+      <SearchBar onFilterTextChange={handleFilterText} />
       <ProductTable products={filteredProducts} />
-    </InStockOnlyContext.Provider>
+    </StockContextProvider>
   );
 };
 
