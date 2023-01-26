@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const StockContext = createContext(null);
 
-const StockContextProvider = ({ children }) => {
+export const StockContextProvider = ({ children }) => {
   const [inStockOnly, setInStockOnly] = useState(false);
   const context = { inStockOnly, setInStockOnly };
 
@@ -11,4 +11,13 @@ const StockContextProvider = ({ children }) => {
   );
 };
 
-export default StockContextProvider;
+export const useStockContext = () => {
+  const context = useContext(StockContext);
+
+  if (!context) {
+    throw new Error(
+      "useStockContext can not be used outside of StockContextProvider"
+    );
+  }
+  return context;
+};
