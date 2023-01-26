@@ -7,7 +7,9 @@ export const StockContextProvider = ({ children }) => {
   const context = { inStockOnly, setInStockOnly };
 
   return (
-    <StockContext.Provider value={context}>{children}</StockContext.Provider>
+    <useStockContext.Provider value={context}>
+      {children}
+    </useStockContext.Provider>
   );
 };
 
