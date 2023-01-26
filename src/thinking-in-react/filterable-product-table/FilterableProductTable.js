@@ -1,5 +1,5 @@
 import { useState } from "react";
-import StockContextProvider from "./context/StockContext";
+import { StockContextProvider } from "./context/StockContext";
 import ProductTable from "./product-table/ProductTable";
 import SearchBar from "./search-bar/SearchBar";
 

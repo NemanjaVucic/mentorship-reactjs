@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { StockContext } from "../context/StockContext";
+import { useStockContext } from "../context/StockContext";
 
 const SearchBar = ({ filterText, onFilterTextChange }) => {
-  const context = useContext(StockContext);
+  const { inStockOnly, setInStockOnly } = useContext(useStockContext);
   const handleFilterText = (e) => {
     onFilterTextChange(e.target.value);
   };
 
   const handleInStockOnlyChange = (e) => {
-    context.setInStockOnly(e.target.checked);
+    setInStockOnly(e.target.checked);
   };
 
   return (
@@ -22,7 +22,7 @@ const SearchBar = ({ filterText, onFilterTextChange }) => {
       <label>
         <input
           type="checkbox"
-          checked={context.inStockOnly}
+          checked={inStockOnly}
           onChange={handleInStockOnlyChange}
         />{" "}
         Only show products in stock

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { StockContext } from "../../context/StockContext";
+import { useStockContext } from "../../context/StockContext";
 
 const ProductRow = ({ product }) => {
-  const context = useContext(StockContext);
-  const isVisible = !context.inStockOnly || product.stocked;
+  const { inStockOnly } = useContext(useStockContext);
+  const isVisible = !inStockOnly || product.stocked;
 
   return (
     isVisible && (
