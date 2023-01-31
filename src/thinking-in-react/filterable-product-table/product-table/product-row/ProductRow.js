@@ -1,4 +1,7 @@
-const ProductRow = ({ product, inStockOnly }) => {
+import { useStockContext } from "../../context/StockContext";
+
+const ProductRow = ({ product }) => {
+  const { inStockOnly } = useStockContext();
   const isVisible = !inStockOnly || product.stocked;
 
   return (

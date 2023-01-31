@@ -1,7 +1,7 @@
 import ProductCategoryRow from "./product-category-row/ProductCategoryRow";
 import ProductRow from "./product-row/ProductRow";
 
-const ProductTable = ({ products, inStockOnly }) => {
+const ProductTable = ({ products }) => {
   let lastCategory = null;
   const rows = products.reduce((acc, product) => {
     if (product.category !== lastCategory) {
@@ -12,13 +12,7 @@ const ProductTable = ({ products, inStockOnly }) => {
         />
       );
     }
-    acc.push(
-      <ProductRow
-        product={product}
-        key={product.name}
-        inStockOnly={inStockOnly}
-      />
-    );
+    acc.push(<ProductRow product={product} key={product.name} />);
     lastCategory = product.category;
     return acc;
   }, []);

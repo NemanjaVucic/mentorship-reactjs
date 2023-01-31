@@ -1,15 +1,13 @@
-const SearchBar = ({
-  filterText,
-  inStockOnly,
-  onFilterTextChange,
-  onInStockOnlyChange,
-}) => {
+import { useStockContext } from "../context/StockContext";
+
+const SearchBar = ({ filterText, onFilterTextChange }) => {
+  const { inStockOnly, setInStockOnly } = useStockContext();
   const handleFilterText = (e) => {
     onFilterTextChange(e.target.value);
   };
 
   const handleInStockOnlyChange = (e) => {
-    onInStockOnlyChange(e.target.checked);
+    setInStockOnly(e.target.checked);
   };
 
   return (
